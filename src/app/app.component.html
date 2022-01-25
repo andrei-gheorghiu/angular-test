@@ -1,1 +1,6 @@
-<so-progress-bar [value]="percentage$ | async"></so-progress-bar>
+<h1>Progress bar example</h1>
+<div class="logger">
+  <pre [innerText]="productData$ | async | json"></pre>
+  <pre [innerText]="productDetails$ | async | json"></pre>
+</div>
+<so-progress-bar [value]="percentage$ | async" [size]="'2rem'"></so-progress-bar>

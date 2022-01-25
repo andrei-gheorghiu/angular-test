@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'so-progress-bar',
@@ -6,18 +6,26 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./progress-bar.component.scss']
 })
 export class ProgressBarComponent {
+  @HostBinding('style') get _style() { return {
+    '--size': this.size,
+    '--color': this.color,
+    '--padding': this.padding
+  }}
 
   @Input() value: number | null = null;
+  @Input() size = '1rem';
+  @Input() padding = '0.5rem';
+  @Input() color = 'darkcyan';
 
   get indicatorStyle(): Record<string, string> {
     return {
-      width: `${this.value || 0}%`,
-      backgroundImage: `repeating-linear-gradient(
-        -45deg,
-          #666,
-          #666 10px,
-          #777 10px,
-          #777 20px)`
+      width: `${this.value || 0}%`
+    }
+  }
+
+  get tooltipStyle(): Record<string, string> {
+    return {
+      left: `${this.value || 0}%`
     }
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SalesService } from "../sales/sales.service";
-import { map, tap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class SalesPercentageService {
 
   percentage$ = this.productsService.getProducts().pipe(
     map(({ totalValue, data }) => totalValue && data.length
-      ? data.reduce((a, b) => a + b.value, 0) * 100 / totalValue
+      ? Math.round(data.reduce((a, b) => a + b.value, 0) * 1e4 / totalValue) / 100
       : 0
     )
   )
