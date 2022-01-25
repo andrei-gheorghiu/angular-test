@@ -1,0 +1,24 @@
+:host {
+  position: relative;
+  height: 1rem;
+  margin: 1rem;
+  display: block;
+  border: 1px solid #666;
+  border-radius: 3px;
+  div {
+    position: absolute;
+    animation: moving-stripes 1s linear infinite;
+    will-change: width;
+    height: 100%;
+    transition: width 2s cubic-bezier(.5,0,.3,1);
+  }
+
+}
+@keyframes moving-stripes {
+ from {
+   background-position: 0 0;
+ }
+  to {
+    background-position: -28.2842px;
+  }
+}
